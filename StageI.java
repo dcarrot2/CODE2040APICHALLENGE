@@ -17,11 +17,8 @@ public class StageI {
 		Registration registration = new Registration();
 		StageI stageI = new StageI();
 		String key = registration.getToken();
-		System.out.println("Key: " + key);
 		String toReverse = stageI.getString(key);
-		System.out.println(toReverse);
 		String reverse = new StringBuffer(toReverse).reverse().toString();
-		System.out.println(reverse);
 		stageI.sendString(reverse, key);
 	}
 	
@@ -40,7 +37,7 @@ public class StageI {
 		HttpResponse response = client.execute(httpPost);
 		String body = responseHandler.handleResponse(response);
 		String parse[] = body.split(":");
-		String straight = parse[1];
+		String straight = parse[1]; // second element then parsed
 		return straight.substring(1, straight.length() - 3);
 	}
 	

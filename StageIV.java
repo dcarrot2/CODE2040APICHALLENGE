@@ -17,10 +17,13 @@ public class StageIV {
 	public static void main(String[] args) throws Exception {
 		Registration registration = new Registration();
 		String token = registration.getToken();
+		
 		StageIV stageIV = new StageIV();
+		
 		String getNewDate = stageIV.getDate(token);
 		System.out.println(stageIV.sendDate(token, getNewDate));
 	}
+
 
 	public String sendDate(String token, String date) throws Exception {
 		if(token == null || date == null) return null;
@@ -66,6 +69,7 @@ public class StageIV {
 	private String addInterval(String date, String interval) {
 		if (date == null || interval == null)
 			return null;
+		// Instant handles ISO format fairly well with its handy methods
 		Instant timeStamp = Instant.parse(date);
 		timeStamp = timeStamp.plusSeconds(Long.parseLong(interval));
 		return timeStamp.toString();

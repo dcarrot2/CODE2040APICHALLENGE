@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -10,7 +9,6 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -81,10 +79,11 @@ public class StageIII {
 		lastIndex = lastIndex.substring(0, lastIndex.length() - 1);
 		array[0] = firstIndex;
 		array[array.length - 2] = lastIndex;
+		// parse for prefix
 		String parsedPrefix = prefix.substring(9, prefix.length() - 4);
 		for(int i = 0; i < array.length - 1; i++){
 			if(!array[i].startsWith(parsedPrefix))
-				noPrefixes.add(array[i].substring(1, array[i].length() - 1));
+				noPrefixes.add(array[i].substring(1, array[i].length() - 1)); // remove extra quotations around element
 		}
 		return noPrefixes;
 	}

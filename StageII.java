@@ -55,12 +55,18 @@ public class StageII {
 		HttpClient client = new DefaultHttpClient();
 		HttpResponse response = client.execute(httpPost);
 		String body = responseHandler.handleResponse(response);
+		
+		// split by comma since it was a more comman delimiter
 		String[] hay = body.split(",");
+		// parse last element for needle
 		String needle = hay[hay.length - 1].substring(9, hay[hay.length - 1].length() - 3);
+		// removed garbage from last element of the list
 		hay[hay.length - 2] = hay[hay.length -2].substring(0, hay[hay.length -2].length() - 1);
 		for(int i = 1; i < hay.length - 1; i++){
-			if(needle.equals(hay[i]))
+			if(needle.equals(hay[i])){
 				index = i;
+				break;
+			}
 		}
 		return index;
 	}

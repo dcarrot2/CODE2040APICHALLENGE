@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 public class Registration {
 	
-	
 	// HTTP POST request
 	public String getToken() throws Exception {
 	 
@@ -18,7 +17,6 @@ public class Registration {
 			String email = "diazjfdaniel@gmail.com";
 			String github = "https://github.com/dcarrot2/CODE2040APICHALLENGE";
 			ResponseHandler<String> responseHandler = new BasicResponseHandler();
-	 
 			
 			JSONObject jsonObj = new JSONObject();
 
@@ -33,7 +31,7 @@ public class Registration {
 			HttpResponse response = client.execute(httpPost);
 			String body = responseHandler.handleResponse(response);
 			String[] parse = body.split(":");
-			String token = parse[1];
+			String token = parse[1]; // token located on second element. It is then parsed.
 			return token.substring(1, token.length() - 3);
 		}
 }
