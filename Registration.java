@@ -34,8 +34,6 @@ public class Registration {
 			String body = responseHandler.handleResponse(response);
 			String[] parse = body.split(":");
 			String token = parse[1];
-			System.out.println("Token: " + token);
-			System.out.println("Token right: " + token.substring(1, token.length() - 3));
 			return token.substring(1, token.length() - 3);
 		}
 }
